@@ -9,8 +9,8 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        neue: ['"Neue Montreal"', "sans-serif"],
-        neueItalic: ['"Neue Montreal Italic"', "sans-serif"],
+        neue: ['"NeueMontreal"', "sans-serif"],
+        neueItalic: ['"NeueMontrealItalic"', "sans-serif"],
       },
       fontSize: {
         "landing": "8rem",

@@ -2,16 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  @font-face {
-    font-family: 'Neue Montreal';
-    src: url(../../public/fonts/PPNeueMontreal-Bold.otf) format('opentype');
-  }
-  @font-face {
-    font-family: 'Neue Montreal Italic';
-    src: url(../../public/fonts/PPNeueMontreal-Italic.otf) format('opentype');
-  }
+@font-face {
+  font-family: 'NeueMontreal';
+  src: url('/fonts/PPNeueMontreal-Bold.otf') format('opentype');
 }
+
+@font-face {
+  font-family: 'NeueMontrealItalic';
+  src: url('/fonts/PPNeueMontreal-Italic.otf') format('opentype');
+}
+
 
 body {
   margin: 0;
