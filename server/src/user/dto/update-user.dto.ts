@@ -1,7 +1,15 @@
 export class UpdateUserDto {
-  email: string;
-  firstName: string;
-  lastName: string;
-  phone: string;
-  password: string;
+  companyName?: string;
+  email?: string;
+  password?: string;
+  phone?: string;
+  imgUrl?: string;
+  about?: string;
+  facebook?: string;
+  linkedin?: string;
+  twitter?: string;
+  instagram?: string;
+  role?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
 }

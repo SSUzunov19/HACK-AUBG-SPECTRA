@@ -1,30 +1,28 @@
+'use client';
+
 import React from "react";
-import type { Metadata } from "next";
+import { usePathname  } from "next/navigation";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
-import Footer from "@/components/footer";
 import Header from "@/components/header";
 
 const inter = Inter({ subsets: ["latin"] });
-
-export const metadata: Metadata = {
-  title: "Spectra",
-};
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const pathname  = usePathname();
+  const isIndexPage = pathname === "/";
+
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Header />
-
+        {isIndexPage ? null : <Header />}
+        
         {children}
-
-        <Footer />
       </body>
     </html>
   );

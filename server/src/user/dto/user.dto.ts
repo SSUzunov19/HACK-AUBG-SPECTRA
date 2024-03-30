@@ -1,8 +1,12 @@
 export class UserDto {
-  id: string;
+  companyName: string;
   email: string;
-  firstName: string;
-  lastName: string;
+  password: string;
   phone: string;
-  username?: string;
+  imgUrl?: string;
+  about?: string;
+  facebook?: string;
+  linkedin?: string;
+  twitter?: string;
+  instagram?: string;
 }

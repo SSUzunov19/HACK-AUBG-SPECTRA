@@ -37,6 +37,12 @@ export class UserService {
     });
   }
 
+  async findUserByCompanyName(companyName: string): Promise<User | null> {
+    return this.prisma.user.findUnique({
+      where: { companyName },
+    });
+  }
+
   async updateUser(id: string, data: Prisma.UserUpdateInput): Promise<User> {
     return this.prisma.user.update({
       where: { id },
