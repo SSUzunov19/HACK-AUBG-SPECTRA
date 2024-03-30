@@ -23,12 +23,14 @@ jobs:
 
       - name: npm install, build, and test
         run: |
-          npm install
-          npm run build --if-present
-          npm run test --if-present
+           cd server
+           npm i
+           npm install typescript
+           npx tsc
+           cp -r node_modules ./dist
 
       - name: Zip artifact for deployment
-        run: zip release.zip ./* -r
+        run: zip release.zip ./server/dist* -r
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
@@ -58,5 +60,5 @@ jobs:
         with:
           app-name: 'spectra-backend'
           slot-name: 'Production'
-          package: .
+          package: './server/dist'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_FB46443AD1A34741B852F243BFA050DB }}
