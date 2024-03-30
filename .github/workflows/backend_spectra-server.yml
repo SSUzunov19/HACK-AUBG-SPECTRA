@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy Node.js app to Azure Web App - spectra-backend
+name: Build and deploy Node.js app to Azure Web App - spectra-server
 
 on:
   push:
@@ -23,11 +23,10 @@ jobs:
 
       - name: npm install, build, and test
         run: |
-           cd server
-           npm i
-           npm install typescript
-           npx tsc
-           cp -r node_modules ./dist
+          cd server
+          npm i
+          npx nest build
+          cp -r node_modules ./dist
 
       - name: Zip artifact for deployment
         run: zip release.zip ./server/dist* -r
@@ -44,7 +43,9 @@ jobs:
     environment:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-    
+    permissions:
+      id-token: write #This is required for requesting the JWT
+
     steps:
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
@@ -54,11 +55,18 @@ jobs:
       - name: Unzip artifact for deployment
         run: unzip release.zip
       
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_8D174A2B32764DF3818CB2FBF32CC55C }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_1875E125B930443BB6A391EA3FA23C2A }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_90ACE5A5FE374826AFC401E981DD144B }}
+
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'spectra-backend'
+          app-name: 'spectra-server'
           slot-name: 'Production'
           package: './server/dist'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_FB46443AD1A34741B852F243BFA050DB }}
+          
