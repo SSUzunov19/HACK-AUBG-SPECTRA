@@ -2,28 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer base {
+  @font-face {
+    font-family: 'Neue Montreal';
+    src: url(../../public/fonts/PPNeueMontreal-Bold.otf) format('opentype');
+  }
+  @font-face {
+    font-family: 'Neue Montreal Italic';
+    src: url(../../public/fonts/PPNeueMontreal-Italic.otf) format('opentype');
   }
 }
 
 body {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-rgb: 97,201,184;
+}
+
+body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: rgb(var(--background-rgb));
 }
 
 @layer utilities {
