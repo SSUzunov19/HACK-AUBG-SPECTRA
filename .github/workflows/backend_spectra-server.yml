@@ -25,6 +25,7 @@ jobs:
         run: |
           cd server
           npm i
+          npm install typescript
           npx nest build
           cp -r node_modules ./dist
 
