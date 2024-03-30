@@ -12,9 +12,6 @@ const config: Config = {
         neue: ['"NeueMontreal"', "sans-serif"],
         neueItalic: ['"NeueMontrealItalic"', "sans-serif"],
       },
-      fontSize: {
-        "landing": "8rem",
-      },
     },
   },
   plugins: [],
