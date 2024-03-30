@@ -24,6 +24,9 @@ const Header: React.FC = () => {
           <Link href="/" legacyBehavior>
             <a className="text-gray-600 hover:text-gray-900">Начало</a>
           </Link>
+          <Link href="/about-us" legacyBehavior>
+            <a className="text-gray-600 hover:text-gray-900">За Нас</a>
+          </Link>
         </div>
         <div className="flex items-center space-x-4">
           <Link href={user ? "/account" : "/login"} legacyBehavior>

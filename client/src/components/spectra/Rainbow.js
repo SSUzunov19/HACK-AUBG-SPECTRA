@@ -103,11 +103,11 @@ const RainbowMaterial = shaderMaterial(
 
 extend({ RainbowMaterial });
 
-export const Rainbow = forwardRef(
+const RainbowComponent = forwardRef(
   (
     {
       startRadius = 0,
-      endRadius = 0.5,
+      endRadius = 0.65,
       emissiveIntensity = 2.5,
       fade = 0.25,
       ...props
@@ -138,3 +138,7 @@ export const Rainbow = forwardRef(
     );
   }
 );
+
+RainbowComponent.displayName = "Rainbow";
+
+export const Rainbow = RainbowComponent;

@@ -4,7 +4,7 @@ import { useFrame } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
 import { Reflect } from "./Reflect";
 
-export const Beam = forwardRef(
+const BeamComponent = forwardRef(
   ({ children, position, stride = 4, width = 8, ...props }, fRef) => {
     const streaks = useRef(null);
     const glow = useRef(null);
@@ -102,3 +102,7 @@ export const Beam = forwardRef(
     );
   }
 );
+
+BeamComponent.displayName = "Beam";
+
+export const Beam = BeamComponent;

@@ -48,12 +48,15 @@ const roundedBoxGeometry = new THREE.ExtrudeGeometry(s, {
 roundedBoxGeometry.translate(0, 0, -depth / 2);
 roundedBoxGeometry.computeVertexNormals();
 
-export const Box = forwardRef((props, ref) => {
+const BoxComponent = forwardRef((props, ref) => {
+  // Component implementation remains the same
   const [hovered, hover] = useState(false);
   const inner = useRef(null);
+
   useFrame(() => {
     lerpC(inner.current.material.emissive, hovered ? "white" : "#454545", 0.1);
   });
+
   return (
     <group scale={0.5} ref={ref} {...props}>
       <mesh
@@ -72,3 +75,9 @@ export const Box = forwardRef((props, ref) => {
     </group>
   );
 });
+
+// Explicitly set the display name for the component
+BoxComponent.displayName = "Box";
+
+// Export the component
+export const Box = BoxComponent;

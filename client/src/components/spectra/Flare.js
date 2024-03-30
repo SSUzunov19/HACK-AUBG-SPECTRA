@@ -3,7 +3,7 @@ import { forwardRef, useRef } from "react";
 import { useTexture, Instances, Instance } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 
-export const Flare = forwardRef(
+const FlareComponent = forwardRef(
   ({ streak = [8, 20, 1], visible, ...props }, fRef) => {
     const ref = useRef(null);
     const [streakTexture, dotTexture, glowTexture] = useTexture([
@@ -61,3 +61,7 @@ export const Flare = forwardRef(
     );
   }
 );
+
+FlareComponent.displayName = "Flare";
+
+export const Flare = FlareComponent;

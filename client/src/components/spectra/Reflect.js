@@ -28,7 +28,7 @@ function createEvent(api, hit, intersect, intersects) {
   };
 }
 
-export const Reflect = forwardRef(
+const ReflectComponent = forwardRef(
   (
     {
       children,
@@ -184,3 +184,7 @@ export const Reflect = forwardRef(
     );
   }
 );
+
+ReflectComponent.displayName = "Reflect";
+
+export const Reflect = ReflectComponent;
