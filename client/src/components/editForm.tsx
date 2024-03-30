@@ -2,18 +2,18 @@
 
 import React, { FormEvent } from "react";
 
-interface EditFormProps {
+type EditFormProps = {
   email: string;
-  setEmail: React.Dispatch<React.SetStateAction<string>>;
+  setEmail: (value: string) => void;
   firstName: string;
-  setFirstName: React.Dispatch<React.SetStateAction<string>>;
+  setFirstName: (value: string) => void;
   lastName: string;
-  setLastName: React.Dispatch<React.SetStateAction<string>>;
+  setLastName: (value: string) => void;
   phone: string;
-  setPhone: React.Dispatch<React.SetStateAction<string>>;
-  handleSubmit: (event: FormEvent<HTMLFormElement>) => void;
+  setPhone: (value: string) => void;
+  handleSubmit: (event: FormEvent<HTMLFormElement>) => void; // Ensure this matches the expected type signature
   handleDelete: () => void;
-}
+};
 
 const EditForm: React.FC<EditFormProps> = ({
   email,
