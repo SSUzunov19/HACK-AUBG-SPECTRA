@@ -67,6 +67,24 @@ export class UserController {
     return this.usersService.findUserById(id);
   }
 
+  @Get('email/:email')
+  @ApiOperation({ summary: 'Get user by email' })
+  @ApiResponse({ status: 404, description: 'Not found.' })
+  @ApiOkResponse({ description: 'Found one record.', type: UserDto })
+  async getUserByEmail(@Param('email') email: string): Promise<UserModel | null> {
+    return this.usersService.findUserByEmail(email);
+  }
+
+  @Get('company/:companyName')
+  @ApiOperation({ summary: 'Get user by company name' })
+  @ApiResponse({ status: 404, description: 'Not found.' })
+  @ApiOkResponse({ description: 'Found one record.', type: UserDto })
+  async getUserByCompanyName(
+    @Param('companyName') companyName: string,
+  ): Promise<UserModel | null> {
+    return this.usersService.findUserByCompanyName(companyName);
+  }
+
   @Put(':id')
   @ApiOperation({ summary: 'Update user' })
   @ApiResponse({ status: 404, description: 'Not found.' })

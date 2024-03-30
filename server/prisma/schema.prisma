@@ -16,13 +16,61 @@ datasource db {
   directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
 }
 
+enum Role {
+  COMPANY
+  ADMIN
+  COMPANY_ADMIN
+}
+
 model User {
   id        String   @id @default(uuid())
+  companyName String @unique
+
   email     String   @unique
   password  String
-  firstName String
-  lastName  String
-  phone     String
+  
+  phone     String?
+
+  imgUrl   String?
+  about   String?
+  facebook   String?
+  linkedin   String?
+  twitter   String?
+  instagram   String?
+  
+  role      Role? @default(COMPANY)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model CompanyIndex{
+  id        String   @id @default(uuid())
+  companyName String @unique
+
+  renewableMaterialsIntensity String
+  recycableMaterialsIntensity String
+  rawMaterialsSourcedSustainably String
+
+  useOfWater String
+  useOfEnergy String
+  partOfLandOnNaturalCover String
+
+  useOfRenewableEnergy String
+  greenhouseGasEmissions String
+  energyProcessEfficiency String
+
+  throwingWasterMaterials String
+  recyclingWasterMaterials String
+  utilizationOfWasteMinimization String
+
+  recyclibility String
+  efficiencyOfWasteManagementSystem String
+  percentageOfRecycledCompoents String 
+
+  userOfBiodegradableMaterials String
+  packagingSizeMaterials String
+  useOfSecondaryResizedMaterials String
+
+  companyCreatedAt DateTime @default(now())
+  companyUpdatedAt DateTime @updatedAt
 }
