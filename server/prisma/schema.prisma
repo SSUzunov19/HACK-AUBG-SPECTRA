@@ -37,31 +37,32 @@ model User {
 
 model CompanyIndex{
   id        String   @id @default(uuid())
-  companyName String @unique
+  name String @unique
+  location String
 
-  renewableMaterialsIntensity String
-  recycableMaterialsIntensity String
-  rawMaterialsSourcedSustainably String
+  renewableResources Int
+  recyclableResources Int
+  sustainableResources Int
 
-  useOfWater String
-  useOfEnergy String
-  partOfLandOnNaturalCover String
+  waterPerDay Int
+  energyPerDay Int
+  landOnNaturalCover Int
 
-  useOfRenewableEnergy String
-  greenhouseGasEmissions String
-  energyProcessEfficiency String
+  renewableEnergy Int
+  ghgProduct Int
+  energyEfficiency Int
 
-  throwingWasterMaterials String
-  recyclingWasterMaterials String
-  utilizationOfWasteMinimization String
+  waste Int
+  recycledWaste Int
+  wasteMinimization Int
 
-  recyclibility String
-  efficiencyOfWasteManagementSystem String
-  percentageOfRecycledCompoents String 
+  recyclability Int
+  wasteEfficiency Int
+  replacableComponents Int 
 
-  userOfBiodegradableMaterials String
-  packagingSizeMaterials String
-  useOfSecondaryResizedMaterials String
+  biodegradableMaterials Int
+  packageSizeOptimization Int
+  secondaryPackageMaterials Int
 
   companyCreatedAt DateTime @default(now())
   companyUpdatedAt DateTime @updatedAt

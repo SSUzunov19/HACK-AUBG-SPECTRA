@@ -22,9 +22,9 @@ export class CompanyIndexService {
     });
   }
 
-  async findCompanyIndexByCompanyName(companyName: string): Promise<CompanyIndex | null> {
+  async findCompanyIndexByCompanyName(name: string): Promise<CompanyIndex | null> {
     return this.prisma.companyIndex.findUnique({
-      where: { companyName },
+      where: { name },
     });
   }
 
