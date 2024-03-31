@@ -1,22 +1,22 @@
-export class UpdateCompanyIndexDto  {
+export class UpdateCompanyIndexDto {
     companyName?: string;
     location?: string;
-    renewableMaterialsIntensity?: string;
-    recycableMaterialsIntensity?: string;
-    rawMaterialsSourcedSustainably?: string;
-    useOfWater?: string;
-    useOfEnergy?: string;
-    partOfLandOnNaturalCover?: string;
-    useOfRenewableEnergy?: string;
-    greenhouseGasEmissions?: string;
-    energyProcessEfficiency?: string;
-    throwingWasterMaterials?: string;
-    recyclingWasterMaterials?: string;
-    utilizationOfWasteMinimization?: string;
-    recyclibility?: string;
-    efficiencyOfWasteManagementSystem?: string;
-    percentageOfRecycledCompoents?: string;
-    userOfBiodegradableMaterials?: string;
-    packagingSizeMaterials?: string;
-    useOfSecondaryResizedMaterials?: string;
+    renewableResources?: number;
+    recyclableResources?: number;
+    sustainableResources?: number;
+    waterPerDay?: number;
+    energyPerDay?: number;
+    landOnNaturalCover?: number;
+    renewableEnergy?: number;
+    ghgProduct?: number;
+    energyEfficiency?: number;
+    waste?: number;
+    recycledWaste?: number;
+    wasteMinimization?: number;
+    recyclability?: number;
+    wasteEfficiency?: number;
+    replacableComponents?: number;
+    biodegradableMaterials?: number;
+    packageSizeOptimization?: number;
+    secondaryPackageMaterials?: number;
 }
