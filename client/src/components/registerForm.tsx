@@ -6,26 +6,35 @@ interface RegisterFormProps {
   onRegister: (
     email: string,
     password: string,
-    firstName: string,
-    lastName: string,
-    phone: string,
+    companyName: string,
+    about: string,
+    facebook: string,
+    linkedin: string,
+    twitter: string,
+    instagram: string
   ) => void;
 }
 
 interface FormErrors {
   email?: string;
   password?: string;
-  firstName?: string;
-  lastName?: string;
-  phone?: string;
+  companyName?: string;
+  about?: string;
+  facebook?: string;
+  linkedin?: string;
+  twitter?: string;
+  instagram?: string;
 }
 
 const RegisterForm: React.FC<RegisterFormProps> = ({ onRegister }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [phone, setPhone] = useState("");
+  const [companyName, setCompanyName] = useState("");
+  const [about, setAbout] = useState("");
+  const [facebook, setFacebook] = useState("");
+  const [linkedin, setLinkedin] = useState("");
+  const [twitter, setTwitter] = useState("");
+  const [instagram, setInstagram] = useState("");
   const [errors, setErrors] = useState<FormErrors>({});
 
   const validate = () => {
@@ -33,11 +42,11 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onRegister }) => {
 
     // Email validation
     if (!email.includes("@")) {
-      return { email: "Невалиден формат на имейл." };
+      return { email: "Invalid email format." };
     } else {
       const parts = email.split("@");
       if (parts.length === 2 && !parts[1].includes(".")) {
-        return { email: "Имейлът трябва да съдържа домейн." };
+        return { email: "The email must contain a domain." };
       }
     }
 
@@ -46,23 +55,8 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onRegister }) => {
     if (!passwordRegex.test(password)) {
       return {
         password:
-          "Паролата трябва да бъде поне 6 символа и да включва поне една главна буква и цифра.",
+          "Password must be at least 6 characters long and include at least one uppercase letter and one number.",
       };
-    }
-
-    // First name validation
-    if (!firstName.trim()) {
-      return { firstName: "Името е задължително." };
-    }
-
-    // Last name validation
-    if (!lastName.trim()) {
-      return { lastName: "Фамилията е задължителна." };
-    }
-
-    // Phone validation
-    if (!/^\d{10}$/.test(phone)) {
-      return { phone: "Невалиден телефонен номер. Трябва да бъде 10 цифри." };
     }
 
     return {};
@@ -74,33 +68,38 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onRegister }) => {
     setErrors(formErrors);
 
     if (Object.keys(formErrors).length === 0) {
-      onRegister(email, password, firstName, lastName, phone);
+      onRegister(
+        email,
+        password,
+        companyName,
+        about,
+        facebook,
+        linkedin,
+        twitter,
+        instagram
+      );
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-col space-y-4 text-black"
+    >
       <input
         type="text"
-        placeholder="Име"
-        value={firstName}
-        onChange={(e) => setFirstName(e.target.value)}
+        placeholder="Company Name"
+        value={companyName}
+        onChange={(e) => setCompanyName(e.target.value)}
         className="px-4 py-2 border rounded-md"
       />
-      {errors.firstName && <p className="text-red-500">{errors.firstName}</p>}
-
-      <input
-        type="text"
-        placeholder="Фамилия"
-        value={lastName}
-        onChange={(e) => setLastName(e.target.value)}
-        className="px-4 py-2 border rounded-md"
-      />
-      {errors.lastName && <p className="text-red-500">{errors.lastName}</p>}
+      {errors.companyName && (
+        <p className="text-red-500">{errors.companyName}</p>
+      )}
 
       <input
         type="email"
-        placeholder="Имейл"
+        placeholder="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         className="px-4 py-2 border rounded-md"
@@ -109,27 +108,62 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onRegister }) => {
 
       <input
         type="password"
-        placeholder="Парола"
+        placeholder="Password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         className="px-4 py-2 border rounded-md"
       />
       {errors.password && <p className="text-red-500">{errors.password}</p>}
 
-      <input
-        type="text"
-        placeholder="Телефон"
-        value={phone}
-        onChange={(e) => setPhone(e.target.value)}
+      <textarea
+        placeholder="About us"
+        value={about}
+        onChange={(e) => setAbout(e.target.value)}
         className="px-4 py-2 border rounded-md"
       />
-      {errors.phone && <p className="text-red-500">{errors.phone}</p>}
+      {errors.about && <p className="text-red-500">{errors.about}</p>}
+
+      <input
+        type="text"
+        placeholder="Facebook"
+        value={facebook}
+        onChange={(e) => setFacebook(e.target.value)}
+        className="px-4 py-2 border rounded-md"
+      />
+      {errors.facebook && <p className="text-red-500">{errors.facebook}</p>}
+
+      <input
+        type="text"
+        placeholder="Linkedin"
+        value={linkedin}
+        onChange={(e) => setLinkedin(e.target.value)}
+        className="px-4 py-2 border rounded-md"
+      />
+      {errors.linkedin && <p className="text-red-500">{errors.linkedin}</p>}
+
+      <input
+        type="text"
+        placeholder="Twitter"
+        value={twitter}
+        onChange={(e) => setTwitter(e.target.value)}
+        className="px-4 py-2 border rounded-md"
+      />
+      {errors.twitter && <p className="text-red-500">{errors.twitter}</p>}
+
+      <input
+        type="text"
+        placeholder="Instagram"
+        value={instagram}
+        onChange={(e) => setInstagram(e.target.value)}
+        className="px-4 py-2 border rounded-md"
+      />
+      {errors.instagram && <p className="text-red-500">{errors.instagram}</p>}
 
       <button
         type="submit"
         className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-700"
       >
-        Регистрация
+        Registration
       </button>
     </form>
   );

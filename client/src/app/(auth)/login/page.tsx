@@ -24,11 +24,9 @@ const LoginPage = () => {
       <div className="w-full max-w-xs">
         <LoginForm onSubmit={handleLogin} />
         <div className="text-center mt-4">
-          <p>Нямате акаунт?</p>
+          <p>Don't have an account?</p>
           <Link href="/register" legacyBehavior>
-            <a className="text-blue-600 hover:text-blue-800">
-              Регистрирайте се тук
-            </a>
+            <a className="text-blue-600 hover:text-blue-800">Register here</a>
           </Link>
         </div>
       </div>

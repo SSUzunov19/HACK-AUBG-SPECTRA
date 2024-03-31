@@ -5,7 +5,7 @@ export const updateUser = async (
   email: string,
   firstName: string,
   lastName: string,
-  phone: string,
+  phone: string
 ) => {
   const response = await apiClient.put(`/user/${id}`, {
     email,

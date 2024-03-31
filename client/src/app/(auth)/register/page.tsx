@@ -12,14 +12,29 @@ const RegisterPage = () => {
 
   // Function to handle registration
   const handleRegister = async (
+    companyName: string,
     email: string,
     password: string,
-    firstName: string,
-    lastName: string,
-    phone: string,
+    about: string,
+    facebook: string,
+    linkedin: string,
+    twitter: string,
+    instagram: string
   ) => {
     try {
-      await register(email, password, firstName, lastName, phone);
+      await register(
+        companyName,
+        email,
+        password,
+        about,
+        facebook,
+        linkedin,
+        twitter,
+        instagram
+      );
+
+      console.log("Registration successful!");
+
       // Handle successful registration, e.g., redirect to login page
       router.push("/login", { scroll: false });
     } catch (error) {
@@ -33,9 +48,9 @@ const RegisterPage = () => {
       <div className="w-full max-w-xs">
         <RegisterForm onRegister={handleRegister} />
         <div className="text-center mt-4">
-          <p>Имате акаунт?</p>
+          <p>Have an account?</p>
           <Link href="/login" legacyBehavior>
-            <a className="text-blue-600 hover:text-blue-800">Влезте от тук</a>
+            <a className="text-blue-600 hover:text-blue-800">Enter from here</a>
           </Link>
         </div>
       </div>

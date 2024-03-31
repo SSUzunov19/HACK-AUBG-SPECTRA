@@ -16,28 +16,31 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-col space-y-4 text-black"
+    >
       <input
         type="email" // Use email input type for proper validation
-        placeholder="Имейл"
+        placeholder="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         className="px-4 py-2 border rounded-md"
-        required // Ensure the field is required
+        required
       />
       <input
         type="password"
-        placeholder="Парола"
+        placeholder="Password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         className="px-4 py-2 border rounded-md"
-        required // Ensure the field is required
+        required
       />
       <button
         type="submit"
         className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700"
       >
-        Влизане
+        Login
       </button>
     </form>
   );
