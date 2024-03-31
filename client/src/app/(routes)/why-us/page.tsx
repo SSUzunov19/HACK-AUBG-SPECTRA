@@ -80,10 +80,10 @@ const WhyUs = () => {
           <div>
             <h2 className="text-3xl font-semibold ">Consumer Demand</h2>
             <p className="text-lg">
-              Meet Expectations: Today's consumers are more environmentally
-              conscious than ever. Our system helps you align with consumer
-              values, demonstrating your commitment to sustainability and
-              boosting brand loyalty.
+              Meet Expectations: Today`&apos;s consumers are more
+              environmentally conscious than ever. Our system helps you align
+              with consumer values, demonstrating your commitment to
+              sustainability and boosting brand loyalty.
             </p>
           </div>
         </section>
