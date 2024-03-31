@@ -14,16 +14,16 @@ import { Prism } from "@/components/spectra/Prism";
 import { Flare } from "@/components/spectra/Flare";
 import { Box } from "@/components/spectra/Box";
 
-export function lerp(object, prop, goal, speed = 0.1) {
+function lerp(object, prop, goal, speed = 0.1) {
   object[prop] = THREE.MathUtils.lerp(object[prop], goal, speed);
 }
 
 const vector = new THREE.Vector3();
-export function lerpV3(value, goal, speed = 0.1) {
+function lerpV3(value, goal, speed = 0.1) {
   value.lerp(vector.set(...goal), speed);
 }
 
-export function calculateRefractionAngle(
+function calculateRefractionAngle(
   incidentAngle,
   glassIor = 2.5,
   airIor = 1.000293
