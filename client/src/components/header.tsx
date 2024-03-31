@@ -25,21 +25,19 @@ const Header: React.FC = () => {
             \\ Pricing
           </a>
         </Link>
-        <Link href="/browse" legacyBehavior>
-          <a className="hover:text-gray-900 transition-colors duration-300">
-            \\ Browse
-          </a>
-        </Link>
+        {user && (
+          <Link href="/browse" legacyBehavior>
+            <a className="hover:text-gray-900 transition-colors duration-300">
+              \\ Browse
+            </a>
+          </Link>
+        )}
         <Link href="/why-us" legacyBehavior>
           <a className="hover:text-gray-900 transition-colors duration-300">
             \\ Why us?
           </a>
         </Link>
-        <Link href="/login" legacyBehavior>
-          <a className="hover:text-gray-900 transition-colors duration-300">
-            \\ Login
-          </a>
-        </Link>
+
         <Link href="/about-us" legacyBehavior>
           <a className="transition-colors duration-300 link-effect font-bold">
             \\ Spectra?

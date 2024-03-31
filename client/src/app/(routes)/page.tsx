@@ -4,10 +4,12 @@ import React from "react";
 import Image from "next/image";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useAuth } from "@/hooks/useAuth";
 
 import Burger from "@/public/svg/BurgerButton.svg";
 
 export default function Home() {
+  const { user } = useAuth();
   const [isMenuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -49,9 +51,11 @@ export default function Home() {
           <a href="/pricing" className="block py-2  text-[#61C9B8]">
             \\ Pricing
           </a>
-          <a href="/browse" className="block py-2 text-[#61C9B8]">
-            \\ Browse
-          </a>
+          {user && (
+            <a href="/browse" className="block py-2 text-[#61C9B8]">
+              \\ Browse
+            </a>
+          )}
           <a href="/why-us" className="block py-2 text-[#61C9B8]">
             \\ Why us?
           </a>
@@ -78,13 +82,20 @@ export default function Home() {
             <div className="max-w-[250px] 2xl:max-w-[370px]">
               <h1 className="font-bold">Elevate Sustainability</h1>
               <p className="font-medium">
-              Harness the power of Big Data to transform your fashion manufacturing processes. Our system identifies and enhances sustainability efforts, guiding you towards greener, more efficient production methods tailored for garment manufacturing giants .
+                Harness the power of Big Data to transform your fashion
+                manufacturing processes. Our system identifies and enhances
+                sustainability efforts, guiding you towards greener, more
+                efficient production methods tailored for garment manufacturing
+                giants .
               </p>
             </div>
             <div className="max-w-[250px] 2xl:max-w-[370px] ml-[193px]">
               <h1 className="font-bold">Optimize with Insight</h1>
               <p className="font-medium">
-              Drive your production forward with actionable insights. Our tailored analytics help you streamline operations, reduce waste, and improve sustainability, setting a new standard in the clothing industry.
+                Drive your production forward with actionable insights. Our
+                tailored analytics help you streamline operations, reduce waste,
+                and improve sustainability, setting a new standard in the
+                clothing industry.
               </p>
             </div>
 
@@ -101,12 +112,14 @@ export default function Home() {
               >
                 <h1 className="font-bold">Pricing //</h1>
               </a>
-              <a
-                href="/browse"
-                className="block hover:text-gray-900 hover:underline transition-colors duration-300"
-              >
-                <h1 className="font-bold">Browse //</h1>
-              </a>
+              {user && (
+                <a
+                  href="/browse"
+                  className="block hover:text-gray-900 hover:underline transition-colors duration-300"
+                >
+                  <h1 className="font-bold">Browse //</h1>
+                </a>
+              )}
               <a
                 href="/why-us"
                 className="block hover:text-gray-900 hover:underline transition-colors duration-300"
