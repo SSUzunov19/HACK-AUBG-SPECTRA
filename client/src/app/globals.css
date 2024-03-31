@@ -3,25 +3,28 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "NeueMontreal";
-  src: url("../public/fonts/PPNeueMontreal-Bold.otf") format("opentype");
+  font-family: 'NeueMontreal';
+  src: url('/fonts/PPNeueMontreal-Bold.otf') format('opentype');
 }
 
 @font-face {
-  font-family: "NeueMontrealItalic";
-  src: url("/fonts/PPNeueMontreal-Italic.otf") format("opentype");
+  font-family: 'NeueMontrealItalic';
+  src: url('/fonts/PPNeueMontreal-Italic.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Vintage';
+  src: url('/fonts/VintageMohai-DemoVersion-Regular.otf') format('opentype');
 }
 
 :root {
   --foreground-rgb: 255, 255, 255;
-  --background-rgb: 97, 201, 184;
+  --background-rgb: 97,201,184;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-rgb));
-  font-family: "NeueMontreal", sans-serif;
-  line-height: 1.5;
 }
 
 .link-effect {
