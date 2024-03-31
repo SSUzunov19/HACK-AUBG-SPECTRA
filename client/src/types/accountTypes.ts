@@ -1,9 +1,12 @@
 export type UserType = {
-  id: string;
+  companyName: string;
   email: string;
-  firstName: string;
-  lastName: string;
   phone: string;
+  about: string;
+  facebook: string;
+  linkedin: string;
+  twitter: string;
+  instagram: string;
 };
 
 export type AccountDetailsProps = {

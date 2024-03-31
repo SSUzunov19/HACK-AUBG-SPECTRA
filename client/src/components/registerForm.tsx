@@ -4,9 +4,10 @@ import React, { useState } from "react";
 
 interface RegisterFormProps {
   onRegister: (
+    companyName: string,
     email: string,
     password: string,
-    companyName: string,
+    phone: string,
     about: string,
     facebook: string,
     linkedin: string,
@@ -16,9 +17,10 @@ interface RegisterFormProps {
 }
 
 interface FormErrors {
+  companyName?: string;
   email?: string;
   password?: string;
-  companyName?: string;
+  phone?: string;
   about?: string;
   facebook?: string;
   linkedin?: string;
@@ -30,6 +32,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onRegister }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [companyName, setCompanyName] = useState("");
+  const [phone, setPhone] = useState("");
   const [about, setAbout] = useState("");
   const [facebook, setFacebook] = useState("");
   const [linkedin, setLinkedin] = useState("");
@@ -69,14 +72,15 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onRegister }) => {
 
     if (Object.keys(formErrors).length === 0) {
       onRegister(
+        companyName,
         email,
         password,
-        companyName,
+        phone,
         about,
         facebook,
         linkedin,
         twitter,
-        instagram
+        instagram,
       );
     }
   };
@@ -114,6 +118,15 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onRegister }) => {
         className="px-4 py-2 border rounded-md"
       />
       {errors.password && <p className="text-red-500">{errors.password}</p>}
+
+      <input
+        type="text"
+        placeholder="Phone"
+        value={phone}
+        onChange={(e) => setPhone(e.target.value)}
+        className="px-4 py-2 border rounded-md"
+      />
+      {errors.phone && <p className="text-red-500">{errors.phone}</p>}
 
       <textarea
         placeholder="About us"

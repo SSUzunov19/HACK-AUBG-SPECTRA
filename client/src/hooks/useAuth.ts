@@ -51,19 +51,27 @@ export const useAuth = (): UseAuth => {
 
   // Register function
   const register = async (
+    companyName: string,
     email: string,
     password: string,
-    firstName: string,
-    lastName: string,
-    phone: string
+    phone: string,
+    about: string,
+    facebook: string,
+    linkedin: string,
+    twitter: string,
+    instagram: string
   ) => {
     try {
       const response = await apiClient.post("/user", {
+        companyName,
         email,
         password,
-        firstName,
-        lastName,
         phone,
+        about,
+        facebook,
+        linkedin,
+        twitter,
+        instagram
       });
       // Consider logging in the user after successful registration
       return response.data;

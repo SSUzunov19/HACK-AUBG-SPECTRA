@@ -400,3 +400,5 @@ FodyWeavers.xsd
 .env
 
 ./.env
+/app/.expo/metro
+/app/.expo

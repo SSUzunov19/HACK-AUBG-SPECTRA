@@ -3,6 +3,7 @@ export type User = {
   companyName: string;
   email: string;
   password: string;
+  phone: string;
   about: string;
   facebook: string;
   linkedin: string;
@@ -17,6 +18,7 @@ export type UseAuth = {
     companyName: string,
     email: string,
     password: string,
+    phone: string,
     about: string,
     facebook: string,
     linkedin: string,
