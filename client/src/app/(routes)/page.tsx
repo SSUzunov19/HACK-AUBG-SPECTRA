@@ -76,21 +76,15 @@ export default function Home() {
           <hr className="h-[3px] bg-[#fff] border-0 w-full" />
           <div className="flex text-[16px] 2xl:text-[20px] mt-[30px]">
             <div className="max-w-[250px] 2xl:max-w-[370px]">
-              <h1 className="font-bold">Heading #1.</h1>
+              <h1 className="font-bold">Elevate Sustainability</h1>
               <p className="font-medium">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et
-                massa mi. Aliquam in hendrerit urna. Pellentesque sit amet
-                sapien fringilla, mattis ligula consectetur, ultrices mauris.
-                Maecenas vitae mattis tellus.
+              Harness the power of Big Data to transform your fashion manufacturing processes. Our system identifies and enhances sustainability efforts, guiding you towards greener, more efficient production methods tailored for garment manufacturing giants .
               </p>
             </div>
             <div className="max-w-[250px] 2xl:max-w-[370px] ml-[193px]">
-              <h1 className="font-bold">Heading #2.</h1>
+              <h1 className="font-bold">Optimize with Insight</h1>
               <p className="font-medium">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et
-                massa mi. Aliquam in hendrerit urna. Pellentesque sit amet
-                sapien fringilla, mattis ligula consectetur, ultrices mauris.
-                Maecenas vitae mattis tellus.
+              Drive your production forward with actionable insights. Our tailored analytics help you streamline operations, reduce waste, and improve sustainability, setting a new standard in the clothing industry.
               </p>
             </div>
 

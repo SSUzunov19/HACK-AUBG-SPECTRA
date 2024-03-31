@@ -40,7 +40,7 @@ function PricingPage() {
                 alt="Checkmark"
                 className="inline-block mr-[18px]"
               />
-              Analysis on up to 3 factories
+              Analysis for 1 factory
             </div>
             <div className="text-black font-neue">
               <Image
@@ -50,7 +50,7 @@ function PricingPage() {
                 alt="Checkmark"
                 className="inline-block mr-[18px]"
               />
-              Analysis on up to 3 factories
+              Priority Customer Support
             </div>
             <div className="text-black font-neue mb-[36px]">
               <Image
@@ -60,7 +60,7 @@ function PricingPage() {
                 alt="Checkmark"
                 className="inline-block mr-[18px]"
               />
-              Analysis on up to 3 factories
+              Personal Recommendations
             </div>
           </div>
         </PricingCard>
@@ -91,7 +91,7 @@ function PricingPage() {
                   alt="Checkmark"
                   className="inline-block mr-[18px]"
                 />
-                Analysis on up to 3 factories
+                Analysis on up to 5 factories
               </div>
               <div className="text-black font-neue">
                 <Image
@@ -101,7 +101,7 @@ function PricingPage() {
                   alt="Checkmark"
                   className="inline-block mr-[18px]"
                 />
-                Analysis on up to 3 factories
+                Personal Support Specialist
               </div>
               <div className="text-black font-neue mb-[36px]">
                 <Image
@@ -111,7 +111,7 @@ function PricingPage() {
                   alt="Checkmark"
                   className="inline-block mr-[18px]"
                 />
-                Analysis on up to 3 factories
+                Personal Recommendations
               </div>
             </div>
           </PricingCard>
@@ -153,7 +153,7 @@ function PricingPage() {
                 alt="Checkmark"
                 className="inline-block mr-[18px]"
               />
-              Analysis on up to 3 factories
+              Advanced analysis
             </div>
           </div>
         </PricingCard>
