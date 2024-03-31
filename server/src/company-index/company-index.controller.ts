@@ -39,6 +39,21 @@ export class CompanyIndexController {
     return this.companyIndexService.createCompanyIndex(companyIndexData);
   }
 
+  @Post('create-many')
+  @ApiOperation({ summary: 'Create many company index' })
+  @ApiResponse({ status: 403, description: 'Forbidden.' })
+  @ApiCreatedResponse({
+    description: 'The records have been successfully created.',
+    type: CreateCompanyIndexDto,
+    isArray: true,
+  })
+  @ApiBody({ type: [CreateCompanyIndexDto] })
+  async createManyCompanyIndex(
+    @Body() companyIndexData: Prisma.CompanyIndexCreateInput[],
+  ): Promise<Prisma.BatchPayload> {
+    return this.companyIndexService.createManyCompanyIndex(companyIndexData);
+  }
+
   @Get()
   @ApiOperation({ summary: 'Get all company index' })
   @ApiOkResponse({
