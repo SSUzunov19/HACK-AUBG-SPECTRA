@@ -12,10 +12,9 @@
   src: url('/fonts/PPNeueMontreal-Italic.otf') format('opentype');
 }
 
-
-body {
-  margin: 0;
-  padding: 0;
+@font-face {
+  font-family: 'Vintage';
+  src: url('/fonts/VintageMohai-DemoVersion-Regular.otf') format('opentype');
 }
 
 :root {

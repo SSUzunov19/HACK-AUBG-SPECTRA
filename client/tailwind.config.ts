@@ -11,9 +11,16 @@ const config: Config = {
       fontFamily: {
         neue: ['"NeueMontreal"', "sans-serif"],
         neueItalic: ['"NeueMontrealItalic"', "sans-serif"],
+        vintage: ['"Vintage"'],
       },
       fontSize: {
         "landing": "8rem",
+      },
+      animation: {
+        introSpin: "spin 20s linear infinite",
+      },
+      backgroundImage: {
+        radialGradient: 'radial-gradient(169.40% 89.55% at 94.76% 6.29%, rgba(0, 0, 0, 0.40) 0%, rgba(255, 255, 255, 0.00) 100%)',
       },
     },
   },
