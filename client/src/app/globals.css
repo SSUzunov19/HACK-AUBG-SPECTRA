@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'NeueMontreal';
-  src: url('/fonts/PPNeueMontreal-Bold.otf') format('opentype');
+  font-family: "NeueMontreal";
+  src: url("../public/fonts/PPNeueMontreal-Bold.otf") format("opentype");
 }
 
 @font-face {
@@ -12,17 +12,55 @@
   src: url('/fonts/PPNeueMontreal-Italic.otf') format('opentype');
 }
 
-@font-face {
-  font-family: 'Vintage';
-  src: url('/fonts/VintageMohai-DemoVersion-Regular.otf') format('opentype');
+
+body {
+  margin: 0;
+  padding: 0;
 }
 
 :root {
   --foreground-rgb: 255, 255, 255;
-  --background-rgb: 97,201,184;
+  --background-rgb: 97, 201, 184;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-rgb));
+  font-family: "NeueMontreal", sans-serif;
+  line-height: 1.5;
+}
+
+.link-effect {
+  color: #fff;
+  transition: background-position 50ms ease;
+}
+
+/* Hover state */
+.link-effect:hover {
+  position: relative;
+  display: inline-block;
+  animation: moveGradient 7s linear infinite;
+  background: linear-gradient(
+    to right,
+    #ff0080,
+    #ff8c00,
+    #40e0d0,
+    #ff8c00,
+    #ff0080
+  );
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; /* Fallback for Safari */
+  transition: background-position 300ms ease;
+}
+
+/* Animation */
+@keyframes moveGradient {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
 }

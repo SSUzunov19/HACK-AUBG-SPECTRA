@@ -13,9 +13,6 @@ const config: Config = {
         neueItalic: ['"NeueMontrealItalic"', "sans-serif"],
         vintage: ['"Vintage"'],
       },
-      fontSize: {
-        "landing": "8rem",
-      },
       animation: {
         introSpin: "spin 20s linear infinite",
       },
