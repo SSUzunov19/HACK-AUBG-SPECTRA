@@ -79,25 +79,25 @@ export default function Home() {
             <div className="ml-auto text-[22px] 2xl:text-[46px] text-end">
               <a
                 href="/the-spectra"
-                className="block hover:text-blue-500 hover:underline transition-colors duration-300"
+                className="block hover:text-gray-900 hover:underline transition-colors duration-300"
               >
                 <h1 className="font-bold">Algorithm //</h1>
               </a>
               <a
                 href="/pricing"
-                className="block hover:text-blue-500 hover:underline transition-colors duration-300"
+                className="block hover:text-gray-900 hover:underline transition-colors duration-300"
               >
                 <h1 className="font-bold">Pricing //</h1>
               </a>
               <a
                 href="/browse"
-                className="block hover:text-blue-500 hover:underline transition-colors duration-300"
+                className="block hover:text-gray-900 hover:underline transition-colors duration-300"
               >
                 <h1 className="font-bold">Browse //</h1>
               </a>
               <a
                 href="/why-us"
-                className="block hover:text-blue-500 hover:underline transition-colors duration-300"
+                className="block hover:text-gray-900 hover:underline transition-colors duration-300"
               >
                 <h1 className="font-bold">Why us? //</h1>
               </a>
