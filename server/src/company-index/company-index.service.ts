@@ -11,6 +11,10 @@ export class CompanyIndexService {
   async createCompanyIndex(data: Prisma.CompanyIndexCreateInput): Promise<CompanyIndex> {
     return this.prisma.companyIndex.create({ data });
   }
+  
+  async createManyCompanyIndex(data: Prisma.CompanyIndexCreateInput[]): Promise<Prisma.BatchPayload> {
+    return this.prisma.companyIndex.createMany({ data });
+  }
 
   async findAllCompanyIndex(): Promise<CompanyIndex[]> {
     return this.prisma.companyIndex.findMany();
