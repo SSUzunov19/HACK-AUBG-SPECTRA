@@ -40,6 +40,9 @@ export default function Home() {
           <a href="/why-us" className="block py-2 text-[#61C9B8]">
             \\ Why us?
           </a>
+          <a href="/login" className="block py-2 text-[40px] text-[#438D81]">
+            \\ Log in / Sign up
+          </a>
           <a href="/about-us" className="block py-2 text-[40px] text-[#438D81]">
             \\ The Spectra △
           </a>
@@ -76,7 +79,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="ml-auto text-[22px] 2xl:text-[46px] text-end">
+            <div className="ml-auto text-[22px] 2xl:text-[40px] text-end">
               <a
                 href="/the-spectra"
                 className="block hover:text-gray-900 hover:underline transition-colors duration-300"
@@ -100,6 +103,12 @@ export default function Home() {
                 className="block hover:text-gray-900 hover:underline transition-colors duration-300"
               >
                 <h1 className="font-bold">Why us? //</h1>
+              </a>
+              <a
+                href="/login"
+                className="block hover:text-gray-900 hover:underline transition-colors duration-300"
+              >
+                <h1 className="font-bold">Log in / Sign up //</h1>
               </a>
               <a href="/about-us" className="link-effect">
                 <h1 className="font-bold">The Spectra △ //</h1>

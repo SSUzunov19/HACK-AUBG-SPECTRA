@@ -23,12 +23,12 @@ const LoginPage = () => {
     <div className="flex flex-col justify-center items-center h-screen bg-white">
       <div className="w-full max-w-xs">
         <LoginForm onSubmit={handleLogin} />
-        <div className="text-center mt-4">
-          <p>Don't have an account?</p>
-          <Link href="/register" legacyBehavior>
-            <a className="text-blue-600 hover:text-blue-800">Register here</a>
-          </Link>
-        </div>
+        <Link href="/register" legacyBehavior>
+          <a className="block text-center mt-4 text-blue-600 hover:text-blue-800 select-none cursor-pointer">
+            <p>Don&apos;t have an account?</p>
+            <p>Register here</p>
+          </a>
+        </Link>
       </div>
     </div>
   );

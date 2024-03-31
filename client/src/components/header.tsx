@@ -35,8 +35,13 @@ const Header: React.FC = () => {
             \\ Why us?
           </a>
         </Link>
-        <Link href="/about-us" legacyBehavior>
+        <Link href="/login" legacyBehavior>
           <a className="hover:text-gray-900 transition-colors duration-300">
+            \\ Login
+          </a>
+        </Link>
+        <Link href="/about-us" legacyBehavior>
+          <a className="transition-colors duration-300 link-effect font-bold">
             \\ Spectra?
           </a>
         </Link>
