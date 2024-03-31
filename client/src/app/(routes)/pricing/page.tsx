@@ -9,7 +9,7 @@ import Badge from "@/public/svg/DiscountBadge.svg";
 
 function PricingPage() {
   return (
-    <div className=" md:overflow-y-hidden bg-gradient-to-tr from-[#55E7D5] from-[-10%] to-[25%] to-[#0A1715]">
+    <div className=" md:overflow-y-hidden bg-gradient-to-tr from-[#55E7D5] from-[-10%] to-[25%] to-[#0A1715] md:h-full md:pt-[150px]">
       <Image
         src={Burger}
         width={53}
@@ -21,7 +21,7 @@ function PricingPage() {
         Find the perfect plan for you
       </div>
       <div className="md:grid md:grid-cols-3 md:mt-[120px] md:overflow-y-hidden">
-        <PricingCard className="mt-[47px] md:mt">
+        <PricingCard className="mt-[47px]">
           <div className="text-4xl flex justify-center mt-[22px] drop-shadow-lg">
             Monthly
           </div>
