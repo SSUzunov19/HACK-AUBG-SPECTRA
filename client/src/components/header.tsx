@@ -15,9 +15,9 @@ const Header: React.FC = () => {
         <a className="font-bold hover:text-gray-900 text-2xl">hemlock</a>
       </Link>
       <nav className="hidden sm:flex mx-auto space-x-8 text-[20px]">
-        <Link href="/sources" legacyBehavior>
+        <Link href="/algo" legacyBehavior>
           <a className="hover:text-gray-900 transition-colors duration-300">
-            \\ Sources
+            \\ Algorithm
           </a>
         </Link>
         <Link href="/pricing" legacyBehavior>

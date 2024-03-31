@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 import Burger from "@/public/svg/BurgerButton.svg";
 
@@ -13,8 +14,22 @@ export default function Home() {
     setMenuOpen(!isMenuOpen);
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0, y: 50 }, // Start from slightly down and invisible
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 1 }, // Customize the animation duration and other properties here
+    },
+  };
+
   return (
-    <main className="h-full relative">
+    <motion.main
+      className="h-full relative"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
       <div className="absolute md:invisible top-0 left-0 z-20">
         <button onClick={toggleMenu}>
           <Image src={Burger} width={100} height={100} alt="Menu" />
@@ -28,8 +43,8 @@ export default function Home() {
         {/* Navigation Menu */}
         <nav className="text-[#38635C] p-5 text-[70px] font-bold">
           <a className="block py-2 text-[#438D81]">Menu</a>
-          <a href="/home" className="block py-2 text-[#61C9B8]">
-            \\ Home
+          <a href="/algo" className="block py-2 text-[#61C9B8]">
+            \\ Algorithm
           </a>
           <a href="/pricing" className="block py-2  text-[#61C9B8]">
             \\ Pricing
@@ -81,7 +96,7 @@ export default function Home() {
 
             <div className="ml-auto text-[22px] 2xl:text-[40px] text-end">
               <a
-                href="/the-spectra"
+                href="/algo"
                 className="block hover:text-gray-900 hover:underline transition-colors duration-300"
               >
                 <h1 className="font-bold">Algorithm //</h1>
@@ -148,6 +163,6 @@ export default function Home() {
           tellus.
         </div>
       </div>
-    </main>
+    </motion.main>
   );
 }
