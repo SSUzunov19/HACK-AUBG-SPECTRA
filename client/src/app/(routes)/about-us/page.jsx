@@ -1,10 +1,10 @@
 "use client";
 
 import * as THREE from "three";
-import { Texture } from "three";
+import Image from "next/image";
 import { useRef, useCallback, useState, useEffect } from "react";
 import { Canvas, useLoader, useFrame } from "@react-three/fiber";
-import { Center, Text3D } from "@react-three/drei";
+import { Center, Html, Text3D, useTexture } from "@react-three/drei";
 import { Bloom, EffectComposer, LUT } from "@react-three/postprocessing";
 import { LUTCubeLoader } from "postprocessing";
 
@@ -13,6 +13,8 @@ import { Beam } from "@/components/spectra/Beam";
 import { Prism } from "@/components/spectra/Prism";
 import { Flare } from "@/components/spectra/Flare";
 import { Box } from "@/components/spectra/Box";
+
+import BackgroundPhoto from "@/public/images/spectra.png";
 
 function lerp(object, prop, goal, speed = 0.1) {
   object[prop] = THREE.MathUtils.lerp(object[prop], goal, speed);
@@ -33,26 +35,13 @@ function calculateRefractionAngle(
 }
 
 export default function App() {
-  const loader = new LUTCubeLoader();
-  const [texture, setTexture] = useState();
-
-  useEffect(() => {
-    (async () => {
-      setTexture(
-        await loader.load(
-          "https://uploads.codesandbox.io/uploads/user/b3e56831-8b98-4fee-b941-0e27f39883ab/DwlG-F-6800-STD.cube"
-        )
-      );
-    })();
-  }, []);
-
   return (
     // Wrapper div with Tailwind classes for full screen
     <div className="w-full h-screen">
       <Canvas
         orthographic
         gl={{ antialias: false }}
-        camera={{ position: [0, 0, 100], zoom: 70 }}
+        camera={{ position: [0, 0, 100], zoom: 70}}
       >
         <color attach="background" args={["black"]} />
         <Scene />
@@ -64,9 +53,11 @@ export default function App() {
             luminanceThreshold={1}
             luminanceSmoothing={1}
           />
-          <LUT lut={texture} />
         </EffectComposer>
       </Canvas>
+      <div>
+        <a className="absolute bg-opacity-[50%] bg-black" href="https://codesandbox.io/p/sandbox/awesome-smoke-48jqct?file=%2FApp.js&utm_medium=sandpack">Aquired from codesandbox</a>
+      </div>
     </div>
   );
 }
@@ -78,6 +69,7 @@ function Scene() {
   const spot = useRef(null);
   const boxreflect = useRef(null);
   const rainbow = useRef(null);
+  const teamTexture = useLoader(THREE.TextureLoader, BackgroundPhoto.src);
 
   const rayOut = useCallback(() => hitPrism(false), []);
   const rayOver = useCallback((e) => {
@@ -87,7 +79,6 @@ function Scene() {
     // Set the intensity really high on first contact.
     if (rainbow.current) {
       rainbow.current.material.emissiveIntensity = 20;
-      // rainbow.current.material.emissiveIntensity = 20
     }
   }, []);
 
@@ -150,7 +141,14 @@ function Scene() {
   return (
     <>
       {/* Lights */}
-      <ambientLight ref={ambient} intensity={0} />
+      <ambientLight ref={ambient} intensity={1} />
+
+      {/* Team photo */}
+      <mesh position={[0,2,-5]}>
+        <planeGeometry args={[16,9]} />
+        <meshBasicMaterial map={teamTexture} transparent/>
+      </mesh>
+
       <pointLight position={[10, -10, 0]} intensity={0.05} />
       <pointLight position={[0, 10, 0]} intensity={0.05} />
       <pointLight position={[-10, 0, 0]} intensity={0.05} />
@@ -163,10 +161,10 @@ function Scene() {
         position={[0, 0, 1]}
       />
       {/* Prism + blocks + reflect beam */}
-      <Beam ref={boxreflect} bounce={10} far={20}>
+      <Beam ref={boxreflect} bounce={10} far={20} >
         <Prism
           scale={0.8}
-          position={[0, -0.5, 0]}
+          position={[0, 0, 0]}
           onRayOver={rayOver}
           onRayOut={rayOut}
           onRayMove={rayMove}
