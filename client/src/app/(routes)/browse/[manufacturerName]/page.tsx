@@ -1,22 +1,37 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+
+import { getCompanyIndexById } from "@/app/api/manufacturerApi";
 import Container from "@/components/ui/container";
 
+interface ManufacturerData {
+  id: string;
+  name: string;
+  location: string;
+  // ... all other properties
+}
+
 function Manufacturer() {
-  const manufacturer = {
-    name: "Manufacturer 1",
-    location: "Location 1",
-    renewableResources: 70,
-    recyclableResources: 90,
-    sustainableResources: 60,
-    waterPerDay: 450,
-    energyPerDay: 5500,
-    landOnNaturalCover: 75,
-    renewableEnergy: 50,
-    ghgProduct: 4.5,
-    energyEfficiency: 75,
-    waste: 40,
-    recycledWaste: 60,
-  };
+  const id = usePathname().split("/").pop();
+  const [manufacturer, setManufacturer] = useState<ManufacturerData | null>(
+    null
+  );
+
+  useEffect(() => {
+    if (id) {
+      // Make sure 'id' is not undefined or null
+      getCompanyIndexById(id)
+        .then((data) => {
+          setManufacturer(data);
+        })
+        .catch((error) => {
+          console.error("Failed to fetch manufacturer:", error);
+          // Handle error state appropriately
+        });
+    }
+  }, [id]);
 
   // Function to format the key string
   const formatKey = (key: string) => {
@@ -30,25 +45,42 @@ function Manufacturer() {
 
   return (
     <Container>
-      <h1 className="text-[56px] font-bold text-white text-center mt-8">
-        {manufacturer.name}
-      </h1>
-      <div className="flex justify-center mt-8 mb-8">
-        <table className="text-[30px] text-white text-start w-auto border-[2px] rounded-lg">
-          <tbody>
-            {Object.entries(manufacturer).map(
-              ([key, value]) =>
-                key !== "name" && (
-                  <tr key={key} className="border-2 hover:bg-gray-700">
-                    <td className="pr-[200px] font-bold py-2 pl-4">
-                      {formatKey(key)}
-                    </td>
-                    <td className="text-end py-2 px-10">{value}</td>
-                  </tr>
+      {manufacturer && (
+        <h1 className="text-[56px] font-bold text-white text-center mt-8">
+          {manufacturer.name}
+        </h1>
+      )}
+      <div className="flex flex-col items-center mt-8 mb-8">
+        {manufacturer && (
+          <table>
+            <tbody>
+              {Object.entries(manufacturer)
+                .filter(
+                  ([key]) =>
+                    ![
+                      "id",
+                      "name",
+                      "companyCreatedAt",
+                      "companyUpdatedAt",
+                    ].includes(key)
                 )
-            )}
-          </tbody>
-        </table>
+                .map(
+                  ([key, value]) =>
+                    key !== "name" && (
+                      <tr
+                        key={key}
+                        className="border-2 hover:bg-gray-700 text-[20px]"
+                      >
+                        <td className="font-bold py-2 pl-4">
+                          {formatKey(key)}
+                        </td>
+                        <td className="py-2 px-10">{value}</td>
+                      </tr>
+                    )
+                )}
+            </tbody>
+          </table>
+        )}
       </div>
     </Container>
   );

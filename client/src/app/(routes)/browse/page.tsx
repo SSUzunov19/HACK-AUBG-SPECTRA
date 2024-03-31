@@ -1,7 +1,8 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { getManufacturers } from "@/app/api/manufacturerApi";
 
 import Container from "@/components/ui/container";
 
@@ -9,12 +10,22 @@ function calculateScore(manufacturer: any, weights_perfect_values: any) {
   let total_weighted_deviation = 0;
   let total_weight = 0;
 
-  for (let [i, [weight, perfect_value]] of weights_perfect_values.entries()) {
-    const response = manufacturer[Object.keys(manufacturer)[i + 2]]; // Adjust index based on manufacturer object structure
-    let deviation, max_deviation;
+  // Assuming you have an array of property names that align with weights_perfect_values
+  const propertyNames = [
+    "renewableResources",
+    "recyclableResources",
+    "sustainableResources", // ... and so on for each corresponding weight
+  ];
+
+  propertyNames.forEach((propertyName, i) => {
+    const response = manufacturer[propertyName];
+    const [weight, perfect_value] = weights_perfect_values[i];
+
+    let deviation = 0;
+    let max_deviation = 0;
 
     if (perfect_value === null) {
-      deviation = max_deviation = 0;
+      // Handle nulls if needed, otherwise skip this property
     } else if (typeof perfect_value === "boolean") {
       deviation = response !== perfect_value ? weight : 0;
       max_deviation = weight;
@@ -23,73 +34,44 @@ function calculateScore(manufacturer: any, weights_perfect_values: any) {
       max_deviation = Math.abs(100 - perfect_value);
     }
 
-    let normalized_weighted_deviation =
-      max_deviation === 0 ? 0 : (weight * deviation) / (weight * max_deviation);
-    total_weighted_deviation += normalized_weighted_deviation;
+    if (max_deviation !== 0) {
+      let normalized_weighted_deviation = (weight * deviation) / max_deviation;
+      total_weighted_deviation += normalized_weighted_deviation;
+    }
     total_weight += weight;
-  }
+  });
 
-  return total_weight === 0
-    ? 0
-    : 10 * (1 - total_weighted_deviation / total_weight);
+  return total_weight > 0
+    ? 10 * (1 - total_weighted_deviation / total_weight)
+    : 0;
 }
 
 function BrowsePage() {
   const router = useRouter();
 
-  function sendManifacturerData(manufacturer: any) {
-    router.push(
-      `/browse/${manufacturer.name}
-      )}`
-    );
-  }
+  const [manufacturersWithRatings, setManufacturersWithRatings] = useState([]);
 
-  const manufacturers = [
-    {
-      name: "Manufacturer 1",
-      location: "Location 1",
-      renewableResources: 70,
-      recyclableResources: 90,
-      sustainableResources: 60,
-      waterPerDay: 450,
-      energyPerDay: 5500,
-      landOnNaturalCover: 75,
-      renewableEnergy: 50,
-      ghgProduct: 4.5,
-      energyEfficiency: 75,
-      waste: 40,
-      recycledWaste: 60,
-      wasteMinimization: 1, // True
-      recyclability: 80,
-      wasteEfficiency: 85,
-      replacableComponents: 90,
-      biodegradableMaterials: 1, // True
-      packageSizeOptimization: 1, // True
-      secondaryPackageMaterials: 1, // True
-    },
-    {
-      name: "Manufacturer 2",
-      location: "Location 2",
-      renewableResources: 70,
-      recyclableResources: 90,
-      sustainableResources: 60,
-      waterPerDay: 450,
-      energyPerDay: 5500,
-      landOnNaturalCover: 75,
-      renewableEnergy: 50,
-      ghgProduct: 4.5,
-      energyEfficiency: 75,
-      waste: 40,
-      recycledWaste: 60,
-      wasteMinimization: 1, // True
-      recyclability: 80,
-      wasteEfficiency: 85,
-      replacableComponents: 90,
-      biodegradableMaterials: 1, // True
-      packageSizeOptimization: 1, // True
-      secondaryPackageMaterials: 1, // True
-    },
-  ];
+  useEffect(() => {
+    async function fetchAndCalculateRatings() {
+      try {
+        const manufacturers = await getManufacturers(); // Adjust this to your actual API call
+        console.log(manufacturers);
+        const calculatedRatings = manufacturers.map((manufacturer: any) => ({
+          ...manufacturer,
+          rating: calculateScore(manufacturer, weights_perfect_values),
+        }));
+        setManufacturersWithRatings(calculatedRatings);
+      } catch (error) {
+        console.error("Failed to fetch manufacturers:", error);
+      }
+    }
+
+    fetchAndCalculateRatings();
+  }, []); // Empty dependency array ensures this runs once on mount
+
+  function sendManifacturerData(manufacturer: any) {
+    router.push(`/browse/${manufacturer.id}`);
+  }
 
   const weights_perfect_values = [
     [8, 60],
@@ -112,18 +94,13 @@ function BrowsePage() {
     [2, 1], // True represented as 1, adjust in your calculation for boolean logic
   ];
 
-  const manufacturersWithRatings = manufacturers.map((manufacturer) => ({
-    ...manufacturer,
-    rating: calculateScore(manufacturer, weights_perfect_values),
-  }));
-
   return (
     <Container>
       <h1 className="text-[56px] font-bold text-white text-center mt-8">
         Browse Manufacturers
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-4">
-        {manufacturersWithRatings.map((manufacturer) => (
+        {manufacturersWithRatings.map((manufacturer: any) => (
           <div
             onClick={() => sendManifacturerData(manufacturer)}
             key={manufacturer.name}
