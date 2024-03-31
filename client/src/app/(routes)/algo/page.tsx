@@ -30,10 +30,10 @@ function AlgoPage() {
                             Meet our algorithm
                         </div>
                         <div className="font-neueItalic md:text-[30px] md:ml-[140px]">
-                            Our algorithm doesn’t just identify problems; it offers solutions. By leveraging real-time data, it provides actionable insights that lead to smarter, more sustainable production decisions. From optimizing resource allocation to minimizing environmental impact, it empowers manufacturers to make changes that matter.
+                            Our algorithm doesn&apos;t just identify problems; it offers solutions. By leveraging real-time data, it provides actionable insights that lead to smarter, more sustainable production decisions. From optimizing resource allocation to minimizing environmental impact, it empowers manufacturers to make changes that matter.
                         </div>
                         <div className="font-neueItalic md:text-[30px] md:mt-[15px] md:ml-[140px]">
-                            We understand the urgency of sustainability in fashion. Our algorithm is continuously learning, adapting to new data to offer the most up-to-date guidance. It's not just about meeting today's standards but setting new benchmarks for tomorrow, ensuring our partners lead the way in eco-friendly manufacturing.
+                            We understand the urgency of sustainability in fashion. Our algorithm is continuously learning, adapting to new data to offer the most up-to-date guidance. It&apos;s not just about meeting today&apos;s standards but setting new benchmarks for tomorrow, ensuring our partners lead the way in eco-friendly manufacturing.
                         </div>
                     </div>
                 </div>
