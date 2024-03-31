@@ -1,5 +1,6 @@
 export class UpdateCompanyIndexDto  {
     companyName?: string;
+    location?: string;
     renewableMaterialsIntensity?: string;
     recycableMaterialsIntensity?: string;
     rawMaterialsSourcedSustainably?: string;

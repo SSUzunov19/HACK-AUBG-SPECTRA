@@ -32,7 +32,7 @@ export class CompanyIndexController {
     description: 'The record has been successfully created.',
     type: CreateCompanyIndexDto,
   })
-  @ApiBody({ type: UpdateCompanyIndexDto })
+  @ApiBody({ type: CreateCompanyIndexDto })
   async createCompanyIndex(
     @Body() companyIndexData: Prisma.CompanyIndexCreateInput,
   ): Promise<CompanyIndexModel> {

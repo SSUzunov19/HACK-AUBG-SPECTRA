@@ -4,6 +4,9 @@ export class CreateCompanyIndexDto {
     @ApiProperty({ example: 'ABC Company', description: 'The name of the company' })
     companyName: string;
 
+    @ApiProperty({ example: 'Location', description: 'The location of the company' })
+    location: string;
+
     @ApiProperty({ example: '50%', description: 'The intensity of renewable materials used by the company' })
     renewableMaterialsIntensity: string;
 

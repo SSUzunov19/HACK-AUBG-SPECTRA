@@ -38,6 +38,7 @@ model User {
 model CompanyIndex{
   id        String   @id @default(uuid())
   companyName String @unique
+  location String
 
   renewableMaterialsIntensity String
   recycableMaterialsIntensity String
